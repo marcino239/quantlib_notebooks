@@ -1,6 +1,6 @@
-IPythonScripts
-==============
+Based on works of Matthias Groncki under: https://github.com/mgroncki/IPythonScripts
 
-Here you find my IPython (Jupyter) notebooks from my blog (ipythonquant.wordpress.org).
+Changes:
+- added docker startup script
+- added YieldCurve calculator
 
-Feel free to download the samples and play around with them.

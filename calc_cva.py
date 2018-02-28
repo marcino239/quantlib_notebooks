@@ -16,7 +16,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import QuantLib as ql
 
-def calc_cva( hazard_rate=0.02, market_rate=0.03, ir_vol=0.0075, swap_term=5, notional=10000, N=2000, seed=1 ):
+def calc_cva( hazard_rate=0.02, market_rate=0.02, ir_vol=0.0075, swap_term=5, notional=10000, N=2000, seed=1 ):
     # Setting evaluation date
     today = ql.Date(15,2,2018)
     ql.Settings.instance().setEvaluationDate(today)
@@ -92,7 +92,7 @@ def calc_cva( hazard_rate=0.02, market_rate=0.03, ir_vol=0.0075, swap_term=5, no
     portfolio = [makeSwap(today + ql.Period("2d"),
                           ql.Period( swap_term, ql.Years ),
                           notional,
-                          0.03,
+                          0.02,
                           euribor6m),
                 ]
     
@@ -195,7 +195,7 @@ def calc_cva( hazard_rate=0.02, market_rate=0.03, ir_vol=0.0075, swap_term=5, no
     # Calculation of the CVA
     recovery = 0.4
     CVA = (1-recovery) * np.sum(dEE[1:] * dPD)
-    return CVA, dEE, dEEstd
+    return CVA, dEE, dEEstd, dPD
 
 def worker_calc_cva( a ):
     # return only CVA
